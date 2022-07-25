@@ -1,24 +1,25 @@
 <template>
   <div class="page-home">
     <h1>慕旅游网</h1>
-    <van-button type="primary">主要按钮</van-button>
+    <!--    <van-button type="primary">主要按钮</van-button>-->
+    <home-banner/>
+    <home-hot/>
+    <home-fine/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import { ajax } from '@/utils/ajax'
-// // 引入组件
-// import Button from 'vant/lib/button'
-// // 引入组件相关的样式
-// import 'vant/lib/button/style'
+import homeBanner from '@/components/home/homeBanner'
+import homeFine from '@/components/home/homeFine'
+import homeHot from '@/components/home/homeHot'
 
 export default {
 
   name: 'HomeView',
   components: {
-    // // 'v-button': Button
-    // Button
+    homeBanner,
+    homeHot,
+    homeFine
   },
   created () {
   }
