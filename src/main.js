@@ -3,7 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import * as filters from './utils/filters'
-
+// Vant UI组件库
+import Vant from 'vant'
+import 'vant/lib/index.css'
+// 使用组件库
+Vue.use(Vant)
 Vue.config.productionTip = false
 /**
  * 全局注册过滤器

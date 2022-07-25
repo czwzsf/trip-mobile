@@ -1,27 +1,26 @@
 <template>
   <div class="page-home">
     <h1>慕旅游网</h1>
+    <van-button type="primary">主要按钮</van-button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { ajax } from '@/utils/ajax'
+// import { ajax } from '@/utils/ajax'
+// // 引入组件
+// import Button from 'vant/lib/button'
+// // 引入组件相关的样式
+// import 'vant/lib/button/style'
 
 export default {
 
   name: 'HomeView',
-  components: {},
+  components: {
+    // // 'v-button': Button
+    // Button
+  },
   created () {
-    // ajax.get('http://django.t.mukewang.com/api/system/slider/list/?types=11').then(resp => {
-    // ajax.get('http://django.t.mukewang.com/api/accounts/user/detail/').then(resp => {
-    // ajax.get('http://localhost:8080/api/system/slider/list/?types=11').then(resp => {
-    // ajax.get('http://localhost:9527/hello/world/').then(resp => {
-    ajax.get('http://127.0.0.1:8000/test/hello/world/').then(resp => {
-      console.log('返回的结果：', resp)
-    }).catch(err => {
-      console.log('请求出错：', err)
-    })
   }
 }
 </script>
