@@ -16,7 +16,7 @@
          :key="item.id">
         <div class="img">
           <span></span>
-          <img :src="item.img" alt="">
+          <img :src="item.img_url" alt="">
         </div>
         <h5 class="van-ellipsis">{{ item.name }}</h5>
         <div class="line-price">
