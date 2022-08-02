@@ -6,22 +6,11 @@ module.exports = {
 
   devServer: {
     proxy: {
-      '/hello': {
-        // target: 'http://localhost:8000',
-        // 代理的地址
+      '/api': {
         target: 'http://127.0.0.1:8000',
         changeOrigin: true,
         pathRewrite: {
-          // '^/api': ''   //需要rewrite重写的URL
-        },
-        '/test': {
-          // target: 'http://localhost:8000',
-          target: 'http://127.0.0.1:8000',
-          changeOrigin: true,
-          pathRewrite: {
-            '^/test': ''
-            // 需要rewrite重写的URL
-          }
+          '^/api': ''   //需要rewrite重写的URL
         }
       }
     }
