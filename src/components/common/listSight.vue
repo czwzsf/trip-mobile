@@ -1,52 +1,25 @@
 <template>
-  <!-- 精选景点 -->
-  <div class="home-fine-box">
-    <!-- 顶上导航 -->
-    <van-cell
-      title="精选景点"
-      icon="location-o"
-      is-link
-      title-style="text-align:left"
-      value="更多"/>
-    <!-- // 顶上导航 -->
-    <!-- 景点的列表 -->
-    <div class="box-main">
-      <!--      TODO 下一阶段实现接口调用-->
-      <SightItem v-for="item in dataList" :key="item.id" :item="item"/>
-    </div>
-    <!-- //景点的列表 -->
+  <div>
+    <a href="#" class="sight-item" v-for="item in datalist" :key="item.id">
+      <div class="img">
+        <span></span>
+        <img :src="item.img_url" alt="数据库没有数据">
+      </div>
+      <h5 class="van-ellipsis">{{ item.name }}</h5>
+      <div class="line-price">
+        <span class="price">￥{{ item.price }}</span>起
+      </div>
+    </a>
   </div>
 </template>
-<script>
-import SightItem from '@/components/common/listSight'
-import { ajax } from '@/utils/ajax'
-import { SightApis } from '@/utils/apis'
 
+<script>
 export default {
-  components: {
-    SightItem
-  },
-  data () {
-    return {
-      dataList: []
-    }
-  },
-  methods: {
-    getfineDataList () {
-      ajax.get(SightApis.sightListUrl, {
-        params: {
-          is_top: 1
-        }
-      }).then(({ data }) => {
-        this.dataList = data.objects
-      })
-    }
-  },
-  created () {
-    this.getfineDataList()
-  }
+  name: 'listSight',
+  props: ['item']
 }
 </script>
+
 <style lang="less">
 .home-fine-box {
   padding: 0 10px;
