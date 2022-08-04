@@ -8,15 +8,13 @@
     </van-tabbar>
   </div>
 </template>
-
 <script>
 export default {
   name: 'commonFooter',
   data () {
-    return{
+    return {
       active: 'home'
     }
   }
 }
 </script>
-

@@ -1,14 +1,15 @@
 <template>
   <div>
-    <a href="#" class="sight-item" v-for="item in datalist" :key="item.id">
+    <a href="#" class="sight-item"
+       v-bind:v-for="item in datalist"
+       v-bind:key="item.id">
       <div class="img">
-        <span></span>
         <img :src="item.img_url" alt="数据库没有数据">
       </div>
       <h5 class="van-ellipsis">{{ item.name }}</h5>
-      <div class="line-price">
-        <span class="price">￥{{ item.price }}</span>起
-      </div>
+<!--      <div class="line-price">-->
+<!--        <span class="price">￥{{ item.price }}</span>起-->
+<!--      </div>-->
     </a>
   </div>
 </template>
@@ -16,7 +17,13 @@
 <script>
 export default {
   name: 'listSight',
-  props: ['item']
+  props: ['item'],
+  data () {
+    // 需要初始化一个datalist
+    return {
+      datalist: []
+    }
+  }
 }
 </script>
 

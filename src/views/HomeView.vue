@@ -5,6 +5,7 @@
     <home-banner/>
     <home-hot/>
     <home-fine/>
+    <common-footer/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 import homeBanner from '@/components/home/homeBanner'
 import homeFine from '@/components/home/homeFine'
 import homeHot from '@/components/home/homeHot'
+import commonFooter from '@/components/common/commonFooter'
 
 export default {
 
@@ -19,7 +21,8 @@ export default {
   components: {
     homeBanner,
     homeHot,
-    homeFine
+    homeFine,
+    commonFooter
   },
   created () {
   }
