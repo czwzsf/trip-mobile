@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+// 使用vue-router插件
 Vue.use(VueRouter)
 
 const routes = [

@@ -7,9 +7,9 @@
         <img :src="item.img_url" alt="数据库没有数据">
       </div>
       <h5 class="van-ellipsis">{{ item.name }}</h5>
-<!--      <div class="line-price">-->
-<!--        <span class="price">￥{{ item.price }}</span>起-->
-<!--      </div>-->
+      <div class="line-price">
+        <span class="price">￥{{ item.min_price }}</span>起
+      </div>
     </a>
   </div>
 </template>
