@@ -38,7 +38,7 @@ export default {
     }
   },
   methods: {
-    getDataList () {
+    getDataList: function () {
       ajax.get(SightApis.sightListUrl, {
         params: {
           is_hot: 1
