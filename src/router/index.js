@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SearchView from '@/views/SearchView'
-import SightList from '@/views/SightList'
-import SightDetail from '@/views/SightDetail'
-import SightInfo from '@/views/SightInfo'
-import SightComment from '@/views/SightComment'
-import SightImage from '@/views/SightImage'
+import SightList from '@/views/sight/SightList'
+import SightDetail from '@/views/sight/SightDetail'
+import SightInfo from '@/views/sight/SightInfo'
+import SightComment from '@/views/sight/SightComment'
+import SightImage from '@/views/sight/SightImage'
 // 使用vue-router插件
 Vue.use(VueRouter)
 

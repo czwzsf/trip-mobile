@@ -2,19 +2,20 @@
   <!-- 热门景点 -->
   <div class="home-hot-box">
     <!-- 顶上导航 -->
-    <Button type="dashed">Dashed</Button>
     <van-cell
       title="热门推荐"
       icon="/static/home/hot/fire.png"
       is-link
       title-style="text-align:left"
-      value="全部榜单"/>
+      value="全部榜单"
+      :to="{name: 'SightList', query: {name: '热门景点'}}"/>
     <!-- // 顶上导航 -->
     <!-- 景点列表 -->
     <div class="box-main">
-      <a href="#" class="hot-item"
-         v-for="item in dataList"
-         :key="item.id">
+      <router-link class="hot-item"
+                   v-for="item in dataList"
+                   :key="item.id"
+                   :to="{name: 'SightDetail', params: {id: item.id}}">
         <div class="img">
           <span></span>
           <img :src="item.img_url" alt="">
@@ -23,7 +24,7 @@
         <div class="line-price">
           <span class="price">￥{{ item.min_price }}</span>起
         </div>
-      </a>
+      </router-link>
     </div>
     <!-- //景点列表 -->
   </div>

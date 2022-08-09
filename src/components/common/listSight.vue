@@ -1,14 +1,16 @@
 <template>
   <div>
-    <a href="#" class="sight-item"
-       v-bind:v-for="item in datalist"
-       v-bind:key="item.id">
-      <div class="img">
-        <img :src="item.img_url" alt="数据库没有数据">
+    <router-link class="sight-item"
+                 :to="{name: 'SightDetail', params: {id: item.id}}">
+      <img :src="item.img_url" :alt="item.name">
+      <div class="right">
+        <h5>{{ item.name }}</h5>
+        <van-rate v-bind="item.score" />
+        <div class="tips">{{ item.comment_count }}人点评 | 100%满意</div>
+        <div class="tips light">{{ item.province }} - {{ item.city }}</div>
+        <div class="line-price">￥ {{ item.min_price }} 起</div>
       </div>
-      <h5 class="van-ellipsis">{{ item.name }}</h5>
-      <span class="price" style="color: red">￥{{ item.min_price }}</span>起
-    </a>
+    </router-link>
   </div>
 </template>
 
@@ -48,7 +50,6 @@ export default {
       .right {
         text-align: left;
         flex-grow: 1;
-        text-align: left;
         justify-content: left;
         padding-left: 5px;
         position: relative;
