@@ -2,6 +2,7 @@
   <!-- 热门景点 -->
   <div class="home-hot-box">
     <!-- 顶上导航 -->
+    <Button type="dashed">Dashed</Button>
     <van-cell
       title="热门推荐"
       icon="/static/home/hot/fire.png"

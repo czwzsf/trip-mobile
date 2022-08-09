@@ -2,6 +2,7 @@
   <div class="page-home">
     <h1>慕旅游网</h1>
     <!--    <van-button type="primary">主要按钮</van-button>-->
+
     <home-banner/>
     <home-hot/>
     <home-fine/>

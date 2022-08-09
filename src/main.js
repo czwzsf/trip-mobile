@@ -8,9 +8,13 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import AtComponents from 'at-ui'
 import 'at-ui-style'
+// iview组件库
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 // 使用组件库
 Vue.use(Vant)
 Vue.use(AtComponents)
+Vue.use(iView)
 Vue.config.productionTip = false
 /**
  * 全局注册过滤器
