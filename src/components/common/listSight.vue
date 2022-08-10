@@ -5,7 +5,7 @@
       <img :src="item.img_url" :alt="item.name">
       <div class="right">
         <h5>{{ item.name }}</h5>
-        <van-rate v-bind="item.score" />
+        <div class="tips" style="color: red">评分：{{ item.score }}</div>
         <div class="tips">{{ item.comment_count }}人点评 | 100%满意</div>
         <div class="tips light">{{ item.province }} - {{ item.city }}</div>
         <div class="line-price">￥ {{ item.min_price }} 起</div>
