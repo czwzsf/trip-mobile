@@ -79,12 +79,12 @@
       <!--TODO 后期更新跳转链接地址-->
       <router-link class="link-more" :to="{name:'SightComment', params: {id}}" fixed>查看更多</router-link>
     </div>
-    <common-footer/>
+<!--    <common-footer/>-->
   </div>
 </template>
 
 <script>
-import commonFooter from '@/components/common/commonFooter'
+// import commonFooter from '@/components/common/commonFooter'
 import CommentItem from '@/components/sight/CommentItem'
 
 export default {
@@ -95,7 +95,7 @@ export default {
     }
   },
   components: {
-    commonFooter,
+    // commonFooter,
     CommentItem
   },
   methods: {
