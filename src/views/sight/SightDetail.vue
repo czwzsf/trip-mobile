@@ -5,12 +5,13 @@
       left-text="返回"
       left-arrow
       @click-left="goBack"
+      fixed
     />
     <!-- 大图 -->
     <div class="sight-banner">
       <van-image
         width="100%"
-        height="100%"
+        height="70%"
         src="https://img01.yzcdn.cn/vant/cat.jpeg"
       />
       <div class="tips">
@@ -43,27 +44,67 @@
               is-link
               :title-style="{'text-align': 'left'}">
       <template #right-icon>
-        <van-icon name="arrow" />
+        <van-icon name="arrow"/>
       </template>
     </van-cell>
     <!-- 门票列表 -->
+    <div class="sight-ticket">
+      <van-cell title="门票" icon="cart-o" title-style="text-align:left"/>
+      <div class="ticket-item" v-for="i in 2" :key="i">
+        <div class="left">
+          <div class="title">成人票</div>
+          <div class="tips">
+            <van-icon name="clock-o"/>
+            <span>7点之前可以预定</span>
+          </div>
+          <div class="tags">
+            <van-tag mark type="primary">标签</van-tag>
+          </div>
+        </div>
+        <div class="right">
+          <div class="price">
+            <span>¥</span>
+            <strong>65</strong>
+            <router-link to="#">
+              <van-button type="warning" size="small">预定</van-button>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- 用户评价 -->
+    <div class="sight-comment">
+      <van-cell title="热门评论" icon="comment-o" title-style="text-align:left"/>
+      <CommentItem/>
+      <!--TODO 后期更新跳转链接地址-->
+      <router-link class="link-more" :to="{name:'SightComment', params: {id}}" fixed>查看更多</router-link>
+    </div>
     <common-footer/>
   </div>
 </template>
 
 <script>
 import commonFooter from '@/components/common/commonFooter'
+import CommentItem from '@/components/sight/CommentItem'
 
 export default {
   name: 'SightDetail',
+  data () {
+    return {
+      id: ''
+    }
+  },
   components: {
-    commonFooter
+    commonFooter,
+    CommentItem
   },
   methods: {
     goBack () {
       this.$router.go(-1)
     }
+  },
+  created () {
+    this.id = this.$route.params.id
   }
 }
 </script>
@@ -130,6 +171,57 @@ export default {
       right: 5px;
       top: 5px
     }
+  }
+
+  // 门票列表
+  .sight-ticket {
+    margin-top: 5px;
+    background-color: #ffffff;
+
+    .ticket-item {
+      display: flex;
+      border-bottom: 1px solid #f6f6f6;
+      padding-bottom: 10px;
+
+      .left {
+        flex: 1;
+        text-align: left;
+        padding: 5px 10px;
+
+        .title {
+          padding: 5px 0px;
+        }
+
+        .tips {
+          font-size: 12px;
+        }
+      }
+
+      .right {
+        width: 100px;
+
+        .price {
+          color: #ff9800;
+
+          strong {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  //评论列表
+  .sight-comment {
+    margin-top: 10px;
+    background-color: #fff;
+  }
+
+  // 查看更多
+  .link-more {
+    display: block;
+    color: #666;
+    padding: 10px;
   }
 }
 </style>
