@@ -69,6 +69,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less">
+.page-search {
+  padding-bottom: 60px;
 
+h2 {
+  font-size: 16px;
+  text-align: left;
+  padding: 5px 10px;
+  margin: 0;
+}
+.sight-list {
+  padding: 10px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+}
 </style>
