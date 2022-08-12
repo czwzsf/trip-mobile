@@ -26,60 +26,51 @@ export default {
   }
 }
 </script>
-
 <style lang="less">
-.home-fine-box {
-  padding: 0 10px;
+// 景点列表
+.sight-item {
+  display: flex;
+  padding-top: 10px;
+  border-bottom: 1px solid #f6f6f6;
+  background-color: #fff;
 
-  .van-cell {
-    padding: 10px 0;
+  img {
+    width: 100px;
+    height: 100px;
   }
 
-  .box-main {
-    // 景点列表
-    .sight-item {
-      display: flex;
-      margin-top: 10px;
-      border-bottom: 1px solid #f6f6f6;
+  .right {
+    text-align: left;
+    flex-grow: 1;
+    text-align: left;
+    justify-content: left;
+    padding-left: 5px;
+    position: relative;
+  }
 
-      img {
-        width: 100px;
-        height: 100px;
-      }
+  h5 {
+    color: #212121;
+    font-size: 14px;
+    padding: 5px 0;
+    margin: 0;
+  }
 
-      .right {
-        text-align: left;
-        flex-grow: 1;
-        justify-content: left;
-        padding-left: 5px;
-        position: relative;
-      }
+  .line-price {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    display: inline-block;
+    color: #f50;
+    font-size: 16px;
+    font-weight: bold;
+  }
 
-      h5 {
-        color: #212121;
-        font-size: 14px;
-        padding: 5px 0;
-        margin: 0;
-      }
+  .tips {
+    font-size: 12px;
+    color: #666;
 
-      .line-price {
-        position: absolute;
-        right: 10px;
-        top: 20px;
-        display: inline-block;
-        color: #f50;
-        font-size: 16px;
-        font-weight: bold;
-      }
-
-      .tips {
-        font-size: 12px;
-        color: #666;
-
-        &.light {
-          color: #999;
-        }
-      }
+    &.light {
+      color: #999;
     }
   }
 }
