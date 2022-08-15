@@ -2,7 +2,12 @@
   <!--搜索页面 -->
   <div>
     <!--标题-->
-    <van-nav-bar title="搜索景点"/>
+    <van-nav-bar title="搜索景点"
+                 left-text="返回"
+                 left-arrow
+                 @click-left="goBack"
+                 v-if="isHome"/>
+    <van-nav-bar title="搜索景点" v-else/>
     <!--搜索-->
     <van-search
       v-model="sightname"
@@ -27,7 +32,7 @@
                     :total-items="totalItems"
                     :items-per-page="perPage"
                     @change="pageChange"/>
-    <common-footer/>
+    <common-footer v-if="!isHome"/>
   </div>
 </template>
 
@@ -48,7 +53,7 @@ export default {
       // 当前的页码
       currentPage: 1,
       // 每页数据的大小
-      perPage: 1,
+      perPage: 5,
       // 热门景点
       is_hot: '',
       // 精选景点
@@ -95,16 +100,25 @@ export default {
      */
     pageChange () {
       this.getDataList()
+    },
+    goBack () {
+      this.$router.go(-1)
+    },
+  },
+  computed: {
+    // 静态属性
+    /**
+     * 是否从首页过来
+     */
+    isHome () {
+      return this.is_hot || this.is_top
     }
   },
   mounted () {
-    this.is_hot = this.$route.query.ishot
-    this.is_top = this.$route.query.istop
+    this.is_hot = this.$route.query.is_hot
+    this.is_top = this.$route.query.is_top
     this.getDataList()
   },
-  // created () {
-  //   this.getDataList()
-  // },
   components: {
     SightItem,
     commonFooter
