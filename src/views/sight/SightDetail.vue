@@ -144,6 +144,7 @@ export default {
     this.id = this.$route.params.id
     this.getSightDetail()
     this.getTicketList()
+    this.getCommentList()
   },
   computed: {
     fullArea () {
@@ -240,7 +241,7 @@ export default {
         padding: 5px 10px;
 
         .title {
-          padding: 5px 0px;
+          padding: 5px 0;
         }
 
         .tips {

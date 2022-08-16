@@ -41,9 +41,18 @@
 <script>
 export default {
   name: 'CommentItem',
+  props: {
+    score: Number,
+    comment: String
+  },
   data () {
     return {
-      value: 4.5
+      value: this.score
+    }
+  },
+  watch: {
+    score (val) {
+      this.value = val
     }
   }
 }
