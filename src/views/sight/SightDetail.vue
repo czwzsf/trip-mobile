@@ -56,7 +56,7 @@
           <div class="title">{{ i.name }}</div>
           <div class="tips">
             <van-icon name="clock-o"/>
-            <span>{{i.desc}}</span>
+            <span>{{ i.desc }}</span>
           </div>
           <div class="tags">
             <van-tag mark type="primary">标签</van-tag>
@@ -65,7 +65,7 @@
         <div class="right">
           <div class="price">
             <span>¥</span>
-            <strong>{{i.sell_price}}</strong>
+            <strong>{{ i.sell_price }}</strong>
             <router-link to="#">
               <van-button type="warning" size="small">预定</van-button>
             </router-link>
@@ -119,13 +119,26 @@ export default {
         this.sightdetail = data
       })
     },
+    /**
+     * 获取门票信息
+     */
     getTicketList () {
       // 接收网页中的id
       const url = SightApis.sightTicketUrl.replace('#{id}', this.id)
-      ajax.get(url).then(({ data: {objects} }) => {
+      ajax.get(url).then(({ data: { objects } }) => {
         this.ticketlist = objects
       })
-    }
+    },
+    /**
+     * 获取评论详细内容
+     */
+    getCommentList () {
+      // 接收网页中的id
+      const url = SightApis.sightCommenttUrl.replace('#{id}', this.id)
+      ajax.get(url).then(({ data: { objects } }) => {
+        this.ticketlist = objects
+      })
+    },
   },
   created () {
     this.id = this.$route.params.id
