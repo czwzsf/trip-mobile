@@ -51,12 +51,12 @@
     <!-- 门票列表 -->
     <div class="sight-ticket">
       <van-cell title="门票" icon="cart-o" title-style="text-align:left"/>
-      <div class="ticket-item" v-for="i in 2" :key="i">
+      <div class="ticket-item" v-for="i in ticketlist" :key="i.pk">
         <div class="left">
-          <div class="title">成人票</div>
+          <div class="title">{{ i.name }}</div>
           <div class="tips">
             <van-icon name="clock-o"/>
-            <span>7点之前可以预定</span>
+            <span>{{i.desc}}</span>
           </div>
           <div class="tags">
             <van-tag mark type="primary">标签</van-tag>
@@ -65,7 +65,7 @@
         <div class="right">
           <div class="price">
             <span>¥</span>
-            <strong>65</strong>
+            <strong>{{i.price}}</strong>
             <router-link to="#">
               <van-button type="warning" size="small">预定</van-button>
             </router-link>
@@ -96,7 +96,9 @@ export default {
     return {
       id: '',
       // 景点的详细信息
-      sightdetail: {}
+      sightdetail: {},
+      // 门票列表
+      ticketlist: []
     }
   },
   components: {
@@ -116,11 +118,19 @@ export default {
       ajax.get(url).then(({ data }) => {
         this.sightdetail = data
       })
+    },
+    getTicketList () {
+      // 接收网页中的id
+      const url = SightApis.sightTicketUrl.replace('#{id}', this.id)
+      ajax.get(url).then(({ data: {objects} }) => {
+        this.ticketlist = objects
+      })
     }
   },
   created () {
     this.id = this.$route.params.id
     this.getSightDetail()
+    this.getTicketList()
   },
   computed: {
     fullArea () {
