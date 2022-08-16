@@ -65,7 +65,7 @@
         <div class="right">
           <div class="price">
             <span>¥</span>
-            <strong>{{i.price}}</strong>
+            <strong>{{i.sell_price}}</strong>
             <router-link to="#">
               <van-button type="warning" size="small">预定</van-button>
             </router-link>
