@@ -12,23 +12,24 @@
       <van-image
         width="100%"
         height="70%"
-        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+        :src="sightdetail.img"
       />
       <div class="tips">
-        <router-link :to="{name:'SightImage', params:{id:1}}">
+        <router-link :to="{name:'SightImage', params:{id}}">
           <van-icon name="video-o"/>
-          <span>10 图片</span>
+          <span>{{ sightdetail.image_count }} 图片</span>
         </router-link>
+        <div class="title">{{ sightdetail.name }}</div>
       </div>
     </div>
     <!-- 评分、景点介绍 -->
     <div class="sight-info">
       <div class="left">
         <div class="info-title">
-          <strong>4分</strong>
+          <strong>{{ sightdetail.score }}</strong>
           <small>很棒</small>
         </div>
-        <div class="info-tips">50 评论</div>
+        <div class="info-tips">{{ sightdetail.comment_count }}评论</div>
         <van-icon name="arrow"/>
       </div>
       <div class="right">
@@ -40,7 +41,7 @@
       </div>
     </div>
     <!-- 地址信息 -->
-    <van-cell title="广东省广州市番禺区番禺大道" icon="location-o"
+    <van-cell :title="fullArea" icon="location-o"
               is-link
               :title-style="{'text-align': 'left'}">
       <template #right-icon>
@@ -79,19 +80,23 @@
       <!--TODO 后期更新跳转链接地址-->
       <router-link class="link-more" :to="{name:'SightComment', params: {id}}" fixed>查看更多</router-link>
     </div>
-<!--    <common-footer/>-->
+    <!--    <common-footer/>-->
   </div>
 </template>
 
 <script>
 // import commonFooter from '@/components/common/commonFooter'
 import CommentItem from '@/components/sight/CommentItem'
+import { SightApis } from '@/utils/apis'
+import { ajax } from '@/utils/ajax'
 
 export default {
   name: 'SightDetail',
   data () {
     return {
-      id: ''
+      id: '',
+      // 景点的详细信息
+      sightdetail: {}
     }
   },
   components: {
@@ -101,10 +106,33 @@ export default {
   methods: {
     goBack () {
       this.$router.go(-1)
+    },
+    /*
+    * 获取景点详细信息
+    *  */
+    getSightDetail () {
+      // 接收网页中的id
+      const url = SightApis.sightDetailUrl.replace('#{id}', this.id)
+      ajax.get(url).then(({ data }) => {
+        this.sightdetail = data
+      })
     }
   },
   created () {
     this.id = this.$route.params.id
+    this.getSightDetail()
+  },
+  computed: {
+    fullArea () {
+      let area = this.sightdetail.province + this.sightdetail.city
+      if (this.sightdetail.area) {
+        area += this.sightdetail.area
+      }
+      if (this.sightdetail.town) {
+        area += this.sightdetail.town
+      }
+      return area
+    }
   }
 }
 </script>

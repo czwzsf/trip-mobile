@@ -21,7 +21,10 @@ const SystemApis = {
  * 景点接口的调用
  */
 const SightApis = {
-  sightListUrl: apiHost + '/sight/sight/list/'
+  // 景点列表
+  sightListUrl: apiHost + '/sight/sight/list/',
+  // 景点详情
+  sightDetailUrl: apiHost + '/sight/sight/detail/#{id}/'
 }
 export {
   AccountApis,
