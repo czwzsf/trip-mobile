@@ -76,7 +76,7 @@
     <!-- 用户评价 -->
     <div class="sight-comment">
       <van-cell title="热门评论" icon="comment-o" title-style="text-align:left"/>
-      <CommentItem/>
+      <CommentItem v-for="item in commentList" :key="item.pk" :item="item"/>
       <!--TODO 后期更新跳转链接地址-->
       <router-link class="link-more" :to="{name:'SightComment', params: {id}}" fixed>查看更多</router-link>
     </div>
@@ -98,7 +98,9 @@ export default {
       // 景点的详细信息
       sightdetail: {},
       // 门票列表
-      ticketlist: []
+      ticketlist: [],
+      // 评论列表
+      commentList: []
     }
   },
   components: {
@@ -106,6 +108,15 @@ export default {
     CommentItem
   },
   methods: {
+    /**
+     * 当url变化时，重新加载数据
+     */
+    loadData () {
+      this.id = this.$route.params.id
+      this.getSightDetail()
+      this.getTicketList()
+      this.getCommentList()
+    },
     goBack () {
       this.$router.go(-1)
     },
@@ -134,17 +145,14 @@ export default {
      */
     getCommentList () {
       // 接收网页中的id
-      const url = SightApis.sightCommenttUrl.replace('#{id}', this.id)
+      const url = SightApis.sightCommentUrl.replace('#{id}', this.id)
       ajax.get(url).then(({ data: { objects } }) => {
-        this.ticketlist = objects
+        this.commentList = objects
       })
     },
   },
   created () {
-    this.id = this.$route.params.id
-    this.getSightDetail()
-    this.getTicketList()
-    this.getCommentList()
+    this.loadData()
   },
   computed: {
     fullArea () {
@@ -156,6 +164,11 @@ export default {
         area += this.sightdetail.town
       }
       return area
+    },
+    watch: {
+      $route () {
+        this.loadData()
+      }
     }
   }
 }
