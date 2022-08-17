@@ -23,7 +23,7 @@ export default {
     homeBanner,
     homeHot,
     homeFine,
-    commonFooter
+    commonFooter,
   },
   created () {
   }

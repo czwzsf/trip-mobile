@@ -3,9 +3,9 @@
   <div class="comment-item-box">
     <div class="cmt-header">
       <div class="rate">
-        <van-rate v-model="value" readonly/>
+        <p>{{ item.score }}</p>
       </div>
-      <div class="user">张三****</div>
+      <div class="user">{{ item.user.nickname || '匿名用户' }}</div>
     </div>
     <div class="cmt-content">
       <p>
@@ -40,19 +40,25 @@
 
 <script>
 export default {
-  name: 'CommentItem',
-  props: {
-    score: Number,
-    comment: String
-  },
+  props: ['item'],
   data () {
     return {
-      value: this.score
+      show: false,
+      index: 0,
+      value: 4.5
     }
   },
-  watch: {
-    score (val) {
-      this.value = val
+  computed: {
+    /**
+     * 图片大图预览需要处理的数据
+     */
+    imageUrls () {
+      return this.item.images.map(i => i.img)
+    }
+  },
+  methods: {
+    onChange (index) {
+      this.index = index
     }
   }
 }
