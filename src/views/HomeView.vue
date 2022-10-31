@@ -48,11 +48,6 @@ export default {
   }),
   methods: {
     submit () {
-      // this.$store.commit('updateUsername',
-      //   {
-      //     uname: this.uname
-      //   }
-      // )
       // 异步
       this.$store.dispatch(
         'updateUser', {
