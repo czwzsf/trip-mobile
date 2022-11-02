@@ -4,11 +4,6 @@
     <!--    <van-button type="primary">主要按钮</van-button>-->
     <home-banner/>
     <home-hot/>
-    <p>当前登入的用户是：{{ user.username }}-{{ profile.text }}</p>
-    <p>
-      <input type="text" v-model="uname">
-      <input type="button" value="提交" @click="submit">
-    </p>
     <home-fine/>
     <common-footer/>
   </div>
@@ -19,7 +14,6 @@ import homeBanner from '@/components/home/homeBanner'
 import homeFine from '@/components/home/homeFine'
 import homeHot from '@/components/home/homeHot'
 import commonFooter from '@/components/common/commonFooter'
-import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
 
@@ -30,46 +24,8 @@ export default {
     homeFine,
     commonFooter,
   },
-  data () {
-    return {
-      uname: ''
-    }
-  },
   created () {
   },
-  // computed: {
-  //   user () {
-  //     return this.$store.state.user
-  //   }
-  // },
-  // 传递对象
-  // computed: mapState({
-  //   username: state => state.user.username,
-  //   nickname: state => state.user.nickname
-  // }),
-  // 传递数组
-  // computed: mapState(['user', 'profile']),
-  computed: {
-    content () {
-      return ''
-    },
-    ...mapState(['user', 'profile'])
-  },
-  methods: {
-    ...mapMutations(['updateUsername']),
-    ...mapActions(['updateUser']),
-    submit () {
-      // 异步
-      // this.$store.dispatch(
-      //   'updateUser', {
-      //     uname: this.uname
-      //   }
-      // )
-      // this.updateUsername({ uname: this.uname })
-      // mapActions使用
-      this.updateUser({ uname: this.uname })
-    }
-  }
 }
 </script>
 <style lang="less" scoped>
