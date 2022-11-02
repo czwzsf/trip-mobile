@@ -8,6 +8,9 @@ export default new Vuex.Store({
     user: {
       username: 'zhangsan',
       nickname: '张三'
+    },
+    profile: {
+      text: '我的详细信息'
     }
   },
   getters: {},
