@@ -7,6 +7,7 @@ import SightDetail from '@/views/sight/SightDetail'
 import SightInfo from '@/views/sight/SightInfo'
 import SightComment from '@/views/sight/SightComment'
 import SightImage from '@/views/sight/SightImage'
+import LoginView from '@/views/accounts/LoginView'
 // 使用vue-router插件
 Vue.use(VueRouter)
 
@@ -52,8 +53,13 @@ const routes = [
     path: '/sight/image/:id',
     name: 'SightImage',
     component: SightImage
-  }
-
+  },
+  // 用户登入
+  {
+    path: '/account/login/',
+    name: 'AccountLogin',
+    component: LoginView
+  },
 ]
 
 const router = new VueRouter({
