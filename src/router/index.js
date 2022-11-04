@@ -8,6 +8,7 @@ import SightInfo from '@/views/sight/SightInfo'
 import SightComment from '@/views/sight/SightComment'
 import SightImage from '@/views/sight/SightImage'
 import LoginView from '@/views/accounts/LoginView'
+import RegisterView from '@/views/accounts/RegisterView'
 // 使用vue-router插件
 Vue.use(VueRouter)
 
@@ -60,6 +61,12 @@ const routes = [
     name: 'AccountLogin',
     component: LoginView
   },
+  // 用户注册
+  {
+    path: '/account/register/',
+    name: 'AccountRegister',
+    component: RegisterView
+  }
 ]
 
 const router = new VueRouter({
