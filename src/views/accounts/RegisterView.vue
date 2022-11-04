@@ -20,7 +20,8 @@
         center
         clearable
         label="短信验证码"
-        placeholder="请输入短信验证码"
+        placeholder="短信验证码"
+        :rules="[{ required: true, message: '请输入验证码' }]"
       >
         <template #button>
           <van-button size="small" type="primary">发送验证码</van-button>
